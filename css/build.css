@@ -677,9 +677,14 @@ with visibility: visible; triggers a hover event that then makes tooltip visible
  /*the values below were as the result of a long-winded, sweaty tweaking, use them as increment for custom durations ^_~ */
  transition: opacity 0.5s ease, transform 0.3s 0.17s ease-out, visibility 0s 0.12s;
 }
-
+.tooltip.-slide-y {
+	--y: -20%;
+	transition: opacity 0.5s ease, transform 0.3s 0.17s ease-out, visibility 0s 0.12s;
+}
+.tooltip.-slide-y.show,
 .tooltip.slide.show {
   --x: 0%;
+  --y: 0%;
   z-index: 1;
   transition: opacity 0.5s, transform 0.3s 0.12s ease, visibility 0s 0.06s;
 }
