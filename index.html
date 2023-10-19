@@ -664,7 +664,240 @@
 .lf-player-controls > div:last-child {
   margin-right: 0px;
 }
-</style></head><body class="vh-full" data-new-gr-c-s-check-loaded="14.1132.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1132.0" data-quillbot-parent="EvANS8r3R4B1As-Fx8fBo"><div class="COMPONENT rounded-md w-52 h-auto builder bg-white text-sm tooltip fixed p-1.5 shadow" style="--delay: 0s; left: 1050px; top: 442px;"><p class="inline-block bg-gray-50 text-gray-800 shadow p-1 text-sm">Fade-out delay;</p><div class="p-1 flex slider-parent relative w-full mb-1 bg-gray-50 text-black text-sm current"><span class="text-xs inline-block relative p-0.5 shadow-inner rounded">0s</span><input min="0" step="0.1" value="1.3" oninput="this.parentNode.parentNode.style.setProperty('--delay', this.value + 's'), this.previousElementSibling.textContent=this.value+'s'" max="100" class="bg-gray-100 delay focus:border-gray-600 border-2 relative w-1/2 text-xs" type="range"><input type="number" min="1" oninput="this.previousElementSibling.max=Math.max(this.value, 1)" value="100.3" class="focus:border-gray-600 border-2 text-center w-1/3 bg-gray-100 shadow relative text-xs"></div><div class="flex mb-1 shadow select-this"><button class="relative p-0.5 rounded-lg bg-blue-50 scale-out"><div style="--delay: 1.2s; text-align: unset;" class="p-1 divide-x-2 bg-gray-50 divide-current duration-500 w-auto tooltip to-left rounded-md shadow text-gray-700 absolute flex items-center"><span class="cssText hover:bg-white rounded-inherit p-1 mr-1 inline-block"></span><span style="border-top-right-radius: inherit; border-bottom-right-radius: inherit;" class="p-1 hover:bg-white text-pink-600 h-auto inline-block className">top-16, text-sm, absolute, inset-0, overflow-hidden</span></div><div class="decorate rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full"><div style="--tw-bg-opacity: 1" class="duration-700 origin-bottom-right -right-2 -bottom-0.5 p-3 shadow bg-gray-50 rounded-full transform absolute"></div><div style="--tw-bg-opacity: 1" class="duration-700 origin-top-left -left-2 -top-0.5 p-3 shadow bg-gray-50 rounded-full transform  absolute"></div></div><p class="truncate w-full relative">tagName: <span class="inline-block p-1 text-blue-600 bg-blue-100 rounded">section</span></p></button><button class="relative p-1 hover:bg-gray-100"><div class="w-full p-1 font-sans shadow rounded-md tooltip to-top absolute bg-white text-gray-700"><div>disabled until any element except<span class="p-1 text-gray-100 inline-block bg-gray-700">input, p and button</span>on the page is selected</div></div><i class="fa fa-h-square transform rotate-90"></i><p class="w-auto text-xs">append here</p></button></div><div class="flex items-center font-sans"><div class="select-none drag-handle relative p-1 rounded-md bg-pink-100 scale-out" style="touch-action: none;"><div class="flex tooltip justify-between to-left text-pink-300 absolute bg-pink-50 text-current rounded-inherit p-0.5 border-2 border-pink-50"><div class="relative"><p class="p-px h-5 w-5 font-black relative flex items-center justify-center border-2 border-pink-300 rounded-full">!</p></div><p class="text-pink-700 pl-0.5 text-xs w-20">click to reset<span class="inline-block p-1 shadow bg-pink-200">[x, y]</span>before dragging and vice-versa</p></div><span class="status">drag here</span><i class="fa fa-anchor"></i></div><hr class="py-2 sep ver border-0 bg-pink-400 p-px rounded shadow"><div tabindex="0" style="--delay: 1.5s;" class="tooltip-parent relative p-0.5 hover:bg-pink-100 rounded"><span>[x, y]</span><button onclick="let t = this.parentNode.parentNode.parentNode, c=&quot;to-top&quot;;
+</style><style type="text/css">.lf-progress {
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  width: 100%;
+  /* margin: 0 10px; */
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.lf-progress:focus {
+  outline: none;
+  border: none;
+}
+.lf-progress::-moz-range-track {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+.lf-progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-moz-range-thumb {
+  -moz-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.lf-progress::-ms-fill-lower {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-fill-upper {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-thumb {
+  border: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress:focus::-ms-fill-lower {
+  background: #ccc;
+}
+.lf-progress:focus::-ms-fill-upper {
+  background: #ccc;
+}
+.lf-player-container :focus {
+  outline: 0;
+}
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-player-btn-container {
+  display: flex;
+  align-items: center;
+}
+.lf-player-btn {
+  cursor: pointer;
+  fill: #999;
+  width: 14px;
+}
+
+.lf-player-btn.active {
+  fill: #555;
+}
+
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 1;
+
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  padding: 10px;
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-arrow {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  bottom: -9px;
+  border-style: solid;
+  border-width: 10px 10px 0px 10px;
+}
+
+.lf-left-align,
+.lf-left-align .lfarrow {
+  left: 0;
+  right: unset;
+}
+
+.lf-right-align,
+.lf-right-align .lf-arrow {
+  right: 0;
+  left: unset;
+}
+
+.lf-text-input {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60px;
+  margin: 0;
+}
+
+.lf-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.lf-color-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lf-color-component {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lf-color-component strong {
+  width: 40px;
+}
+
+.lf-color-component input[type='range'] {
+  margin: 0 0 0 10px;
+}
+
+.lf-color-component input[type='number'] {
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+.lf-color-preview {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+}
+
+.lf-preview {
+  height: 60px;
+  width: 60px;
+}
+
+.lf-popover-snapshot {
+  width: 150px;
+}
+.lf-popover-snapshot h5 {
+  margin: 5px 0 10px 0;
+  font-size: 0.75rem;
+}
+.lf-popover-snapshot a {
+  display: block;
+  text-decoration: none;
+}
+.lf-popover-snapshot a:before {
+  content: '⥼';
+  margin-right: 5px;
+}
+.lf-popover-snapshot .lf-note {
+  display: block;
+  margin-top: 10px;
+  color: #999;
+}
+.lf-player-controls > div {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.lf-player-controls > div:first-child {
+  margin-left: 0px;
+}
+.lf-player-controls > div:last-child {
+  margin-right: 0px;
+}
+</style></head><body class="vh-full" data-new-gr-c-s-check-loaded="14.1132.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1132.0" data-quillbot-parent="EvANS8r3R4B1As-Fx8fBo"><div class="COMPONENT rounded-md w-52 h-auto builder bg-white text-sm tooltip fixed p-1.5 shadow" style="--delay: 0s; left: 1050px; top: 442px;"><p class="inline-block bg-gray-50 text-gray-800 shadow p-1 text-sm">Fade-out delay;</p><div class="p-1 flex slider-parent relative w-full mb-1 bg-gray-50 text-black text-sm current"><span class="text-xs inline-block relative p-0.5 shadow-inner rounded">0s</span><input min="0" step="0.1" value="1.3" oninput="this.parentNode.parentNode.style.setProperty('--delay', this.value + 's'), this.previousElementSibling.textContent=this.value+'s'" max="100" class="bg-gray-100 delay focus:border-gray-600 border-2 relative w-1/2 text-xs" type="range"><input type="number" min="1" oninput="this.previousElementSibling.max=Math.max(this.value, 1)" value="100.3" class="focus:border-gray-600 border-2 text-center w-1/3 bg-gray-100 shadow relative text-xs"></div><div class="flex mb-1 shadow select-this"><button class="relative p-0.5 rounded-lg bg-blue-50 scale-out"><div style="--delay: 1.2s; text-align: unset;" class="p-1 divide-x-2 bg-gray-50 divide-current duration-500 w-auto tooltip to-left rounded-md shadow text-gray-700 absolute flex items-center"><span class="cssText hover:bg-white rounded-inherit p-1 mr-1 inline-block"></span><span style="border-top-right-radius: inherit; border-bottom-right-radius: inherit;" class="p-1 hover:bg-white text-pink-600 h-auto inline-block className">tooltip, no-hover, no-focus, no-focus-within, slide, absolute, inset-0, show</span></div><div class="decorate rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full"><div style="--tw-bg-opacity: 1" class="duration-700 origin-bottom-right -right-2 -bottom-0.5 p-3 shadow bg-gray-50 rounded-full transform absolute"></div><div style="--tw-bg-opacity: 1" class="duration-700 origin-top-left -left-2 -top-0.5 p-3 shadow bg-gray-50 rounded-full transform  absolute"></div></div><p class="truncate w-full relative">tagName: <span class="inline-block p-1 text-blue-600 bg-blue-100 rounded">section</span></p></button><button class="relative p-1 hover:bg-gray-100"><div class="w-full p-1 font-sans shadow rounded-md tooltip to-top absolute bg-white text-gray-700"><div>disabled until any element except<span class="p-1 text-gray-100 inline-block bg-gray-700">input, p and button</span>on the page is selected</div></div><i class="fa fa-h-square transform rotate-90"></i><p class="w-auto text-xs">append here</p></button></div><div class="flex items-center font-sans"><div class="select-none drag-handle relative p-1 rounded-md bg-pink-100 scale-out" style="touch-action: none;"><div class="flex tooltip justify-between to-left text-pink-300 absolute bg-pink-50 text-current rounded-inherit p-0.5 border-2 border-pink-50"><div class="relative"><p class="p-px h-5 w-5 font-black relative flex items-center justify-center border-2 border-pink-300 rounded-full">!</p></div><p class="text-pink-700 pl-0.5 text-xs w-20">click to reset<span class="inline-block p-1 shadow bg-pink-200">[x, y]</span>before dragging and vice-versa</p></div><span class="status">drag here</span><i class="fa fa-anchor"></i></div><hr class="py-2 sep ver border-0 bg-pink-400 p-px rounded shadow"><div tabindex="0" style="--delay: 1.5s;" class="tooltip-parent relative p-0.5 hover:bg-pink-100 rounded"><span>[x, y]</span><button onclick="let t = this.parentNode.parentNode.parentNode, c=&quot;to-top&quot;;
 						  t.classList.replace(&quot;to-bottom&quot;,c)||t.classList.replace(&quot;to-left&quot;,c)||t.classList.replace(&quot;to-right&quot;,c)||t.classList.add(c)" tabindex="0" style="--arrow-x:-3px;" class="tooltip to-top absolute text-center rounded left-3 bg-pink-50 w-full text-current shadow"><i class="fa fa-arrow-up"></i></button><button onclick="let t = this.parentNode.parentNode.parentNode, c=&quot;to-left&quot;;
 						  t.classList.replace(&quot;to-bottom&quot;,c)||t.classList.replace(&quot;to-right&quot;,c)||t.classList.replace(&quot;to-top&quot;,c)||t.classList.add(c)" tabindex="0" class="shadow tooltip to-left absolute text-center rounded top-3 right-full -left-10 bg-pink-50 w-full text-current"><i class="fa fa-arrow-left"></i></button><button onclick="let t = this.parentNode.parentNode.parentNode, c=&quot;to-right&quot;;
 						  t.classList.replace(&quot;to-bottom&quot;,c)||t.classList.replace(&quot;to-top&quot;,c)||t.classList.replace(&quot;to-left&quot;,c)||t.classList.add(c)" tabindex="0" class="tooltip to-right absolute text-center rounded bg-pink-50 w-full text-current shadow"><i class="fa fa-arrow-right"></i></button><button onclick="let t = this.parentNode.parentNode.parentNode, c=&quot;to-bottom&quot;;
@@ -693,7 +926,7 @@
 		  <div class="duration-700 origin-top-left -left-7 bottom-3/4 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
 		</div>
         <div>
-		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true">pt-2 md:mt-0 relative p-1 h-full</div>
+		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true">Bots can be given colours which serve as quick visual aids to indicate market trends or conditions.</div>
 		</div>
       </div>
 	  
@@ -703,7 +936,7 @@
 		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-top-left -left-7 bottom-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
 		</div>
 		<span class="relative flex flex-col items-start">
-		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">main</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
+		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">#text</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
 		</span>
 		
 		<div class="w-auto relative">
@@ -718,7 +951,7 @@
 		  <div class="duration-700 origin-top-left -left-7 bottom-3/4 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
 		</div>
         <div>
-		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true">top-0 rounded-xl bg-white left-full h-full w-full absolute pt-3</div>
+		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true"></div>
 		</div>
       </div>
 	  
@@ -728,7 +961,7 @@
 		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-top-left -left-7 bottom-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
 		</div>
 		<span class="relative flex flex-col items-start">
-		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">aside</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
+		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">div</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
 		</span>
 		
 		<div class="w-auto relative">
@@ -737,17 +970,92 @@
 		<div class="w-full relative flex-1 overflow-y-hidden overflow-scroll">
 		  <div spellcheck="false" style="--tw-bg-opacity:0.2" class="attribute-value rounded-md border-gray-50 bg-gray-100 border-2 flex-1 h-auto outline-none text-yellow-600 pt-0.5 pl-1 whitespace-pre m-0.5 relative shadow w-auto" contenteditable=""></div>
 	    </div>
-	  </div></li></ol></div><div style="--delay: 0.8s;" class="tooltip to-top flex absolute items-center justify-center space-x-2"><div class="editor-resizer space-x-1 flex items-center justify-center p-1 rounded bg-gray-100 text-xs shadow text-gray-700"><div class="-space-x-1.5 flex"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div><span class="relative">width</span><div class="p-1 size bg-gray-200 shadow relative" contenteditable="true" data-gramm="false" wt-ignore-input="true">50</div><span class="p-0.5" contenteditable="">vw</span><hr style="--height:2px;--width:6px;" class="py-3 relative sep ver border-0 bulge-center"><span class="relative">height</span><div class="p-1 size bg-gray-200 shadow relative text-center whitespace-pre" data-placeholder="[0-9]+" contenteditable="true" data-gramm="false" wt-ignore-input="true">72</div><span class="p-0.5" contenteditable="">vh</span></div></div><!--Tooltip to left for elements count and relational selections, along with the delimeter for creating a new item in the list--><div style="--y: -50%;" class="decorate-parent flex space-x-0.5 rounded p-1 tooltip w-auto to-left absolute bg-white shadow"><div class="rounded-md decorate inset-0 absolute overflow-hidden"><div class="absolute p-4 -bottom-4 -right-4 rounded-full bg-yellow-400 duration-300" style="--tw-bg-opacity: 0.3;"></div><div class="absolute p-5 -left-4 -top-4 rounded-full bg-yellow-300 duration-150" style="--tw-bg-opacity: 0.12;"></div></div><div class="static unaffected text-left bg-white text-xs"><code class="relative dom-walker">{<ul class="list-none text-xs"><li class="text-center whitespace-pre flex"><span contenteditable="true" spellcheck="false" class="p-1" data-placeholder="<N>" data-gramm="false" wt-ignore-input="true">1</span><hr class="sep ver p-px bg-black"><span class="p-1" contenteditable="true" spellcheck="false" data-placeholder="relation" data-gramm="false" wt-ignore-input="true">pN</span></li></ul>}</code><div class="inline-flex relative items-center justify-center"><div class="rounded-md decorate inset-0 absolute overflow-hidden"><div class="absolute p-4 -bottom-4 -right-4 rounded-full bg-yellow-400 shadow duration-300" style="--tw-bg-opacity: 0.3;"></div><div class="absolute p-5 -left-4 -top-4 rounded-full bg-yellow-300 shadow duration-150" style="--tw-bg-opacity: 0.12;"></div><div class="shadow absolute p-2 bottom-0 left-0 rounded-full bg-yellow-50 bg-blend-difference duration-200" style="--tw-bg-opacity: 0.1;"></div></div><label role="button" class="focus-within:border-yellow-200 focus-within:bg-yellow-100 border-transparent border-2 toggle-wrapper rounded shadow relative"><input type="checkbox" title="activate"><div class="px-1 tooltip to-left flex align-middle absolute rounded bg-white shadow items-center justify-center text-current p-0.5 text-center" data-details="[inactive]"><br><hr class="sep ver bulge-center border-0 p-0.5 h-full py-3 border-transparent">highlight</div><span class="toggle"></span></label><button class="hover:bg-yellow-300 fa fa-crosshairs p-1.5 mt-0 rounded shadow h-full relative ml-1"></button></div><output class="block p-1 font-semibold text-yellow-700 bg-gradient-to-r from-yellow-100 text-xs">HTMLElement</output><hr class="p-px bulge-center text-yellow-500 relative sep hor border-0"><!--no longer required
+	  </div></li><li class="text-gray-700 relative ignore"><div class="relative mb-1 p-1">
+		<div class="rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full">
+		  <div class="duration-700 origin-bottom-right -right-2 top-3/4 translate-y-1 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
+		  <div class="duration-700 origin-top-left -left-7 bottom-3/4 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
+		</div>
+        <div>
+		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true">Users eventually decide what each colour means.</div>
+		</div>
+      </div>
+	  
+	  <div class="wrap-on-line rounded-md decorate-parent">
+		<div class="decorate rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full">
+		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-bottom-right -right-2 top-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
+		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-top-left -left-7 bottom-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
+		</div>
+		<span class="relative flex flex-col items-start">
+		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">#text</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
+		</span>
+		
+		<div class="w-auto relative">
+			<span style="--tw-bg-opacity:0.3" contenteditable="true" data-placeholder="[attribute]" class="attribute-name border-yellow-100 border-2 inline-block outline-none relative bg-yellow-200 p-1" data-gramm="false" wt-ignore-input="true"></span>
+		</div>
+		<div class="w-full relative flex-1 overflow-y-hidden overflow-scroll">
+		  <div spellcheck="false" style="--tw-bg-opacity:0.2" class="attribute-value rounded-md border-gray-50 bg-gray-100 border-2 flex-1 h-auto outline-none text-yellow-600 pt-0.5 pl-1 whitespace-pre m-0.5 relative shadow w-auto" contenteditable=""></div>
+	    </div>
+	  </div><div class="pointer-events-none absolute bg-yellow-400 text-xs font-sans p-0.5 inline-block top-0 -mt-2.5 right-0 z-10">added</div></li><li class="text-gray-700 relative" index="2" data-after="\n/"><div class="relative mb-1 p-1">
+		<div class="rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full">
+		  <div class="duration-700 origin-bottom-right -right-2 top-3/4 translate-y-1 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
+		  <div class="duration-700 origin-top-left -left-7 bottom-3/4 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
+		</div>
+        <div>
+		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true">mt-3</div>
+		</div>
+      </div>
+	  
+	  <div class="wrap-on-line rounded-md decorate-parent">
+		<div class="decorate rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full">
+		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-bottom-right -right-2 top-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
+		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-top-left -left-7 bottom-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
+		</div>
+		<span class="relative flex flex-col items-start">
+		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">div</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
+		</span>
+		
+		<div class="w-auto relative">
+			<span style="--tw-bg-opacity:0.3" contenteditable="true" data-placeholder="[attribute]" class="attribute-name border-yellow-100 border-2 inline-block outline-none relative bg-yellow-200 p-1" data-gramm="false" wt-ignore-input="true"></span>
+		</div>
+		<div class="w-full relative flex-1 overflow-y-hidden overflow-scroll">
+		  <div spellcheck="false" style="--tw-bg-opacity:0.2" class="attribute-value rounded-md border-gray-50 bg-gray-100 border-2 flex-1 h-auto outline-none text-yellow-600 pt-0.5 pl-1 whitespace-pre m-0.5 relative shadow w-auto" contenteditable=""></div>
+	    </div>
+	  </div></li><li class="text-gray-700 relative" index="3" data-after="\n/"><div class="relative mb-1 p-1">
+		<div class="rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full">
+		  <div class="duration-700 origin-bottom-right -right-2 top-3/4 translate-y-1 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
+		  <div class="duration-700 origin-top-left -left-7 bottom-3/4 p-10 shadow bg-yellow-50 shadow rounded-full transform scale-150 absolute"></div>
+		</div>
+        <div>
+		  <div spellcheck="false" class="relative text whitespace-pre text-yellow-700 overflow-scroll text-xs outline-none shadow py-1 pl-0.5 rounded" contenteditable="true" data-placeholder="className OR text" data-gramm="false" wt-ignore-input="true">whitespace-pre [&amp;&gt;*]:p-2 space-x-3 [&amp;&gt;*]:inline-block p-2 [&amp;&gt;*]:bg-current:border-8:border-current relative</div>
+		</div>
+      </div>
+	  
+	  <div class="wrap-on-line rounded-md decorate-parent">
+		<div class="decorate rounded-inherit top-0 left-0 absolute overflow-hidden h-full w-full">
+		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-bottom-right -right-2 top-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
+		  <div style="--tw-bg-opacitya: 0.8" class="duration-700 origin-top-left -left-7 bottom-3/4 p-4 bg-white shadow rounded-full transform-gpu scale-150 absolute"></div>
+		</div>
+		<span class="relative flex flex-col items-start">
+		  <span data-placeholder="tagName" style="font-family: Arial;" class="tag font-fredoka" contenteditable="true" spellcheck="false" data-gramm="false" wt-ignore-input="true">div</span><div class="shadow cursor-pointer font-sans tooltip to-bottom absolute text-yellow-600 bg-yellow-50 p-0.5 whitespace-pre rounded"><i class="bg-yellow-200 shadow m-0.5 p-1 rounded-full fa fa-highlighter"></i>highlight</div>
+		</span>
+		
+		<div class="w-auto relative">
+			<span style="--tw-bg-opacity:0.3" contenteditable="true" data-placeholder="[attribute]" class="attribute-name border-yellow-100 border-2 inline-block outline-none relative bg-yellow-200 p-1" data-gramm="false" wt-ignore-input="true"></span>
+		</div>
+		<div class="w-full relative flex-1 overflow-y-hidden overflow-scroll">
+		  <div spellcheck="false" style="--tw-bg-opacity:0.2" class="attribute-value rounded-md border-gray-50 bg-gray-100 border-2 flex-1 h-auto outline-none text-yellow-600 pt-0.5 pl-1 whitespace-pre m-0.5 relative shadow w-auto" contenteditable=""></div>
+	    </div>
+	  </div></li></ol></div><div style="--delay: 0.8s;" class="tooltip to-top flex absolute items-center justify-center space-x-2"><div class="editor-resizer space-x-1 flex items-center justify-center p-1 rounded bg-gray-100 text-xs shadow text-gray-700"><div class="-space-x-1.5 flex"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div><span class="relative">width</span><div class="p-1 size bg-gray-200 shadow relative" contenteditable="true" data-gramm="false" wt-ignore-input="true">50</div><span class="p-0.5" contenteditable="">vw</span><hr style="--height:2px;--width:6px;" class="py-3 relative sep ver border-0 bulge-center"><span class="relative">height</span><div class="p-1 size bg-gray-200 shadow relative text-center whitespace-pre" data-placeholder="[0-9]+" contenteditable="true" data-gramm="false" wt-ignore-input="true">72</div><span class="p-0.5" contenteditable="">vh</span></div></div><!--Tooltip to left for elements count and relational selections, along with the delimeter for creating a new item in the list--><div style="--y: -50%;" class="decorate-parent flex space-x-0.5 rounded p-1 tooltip w-auto to-left absolute bg-white shadow"><div class="rounded-md decorate inset-0 absolute overflow-hidden"><div class="absolute p-4 -bottom-4 -right-4 rounded-full bg-yellow-400 duration-300" style="--tw-bg-opacity: 0.3;"></div><div class="absolute p-5 -left-4 -top-4 rounded-full bg-yellow-300 duration-150" style="--tw-bg-opacity: 0.12;"></div></div><div class="static unaffected text-left bg-white text-xs"><code class="relative dom-walker">{<ul class="list-none text-xs"><li class="text-center whitespace-pre flex"><span contenteditable="true" spellcheck="false" class="p-1" data-placeholder="<N>" data-gramm="false" wt-ignore-input="true">1</span><hr class="sep ver p-px bg-black"><span class="p-1" contenteditable="true" spellcheck="false" data-placeholder="relation" data-gramm="false" wt-ignore-input="true">fC</span></li></ul>}</code><div class="inline-flex relative items-center justify-center"><div class="rounded-md decorate inset-0 absolute overflow-hidden"><div class="absolute p-4 -bottom-4 -right-4 rounded-full bg-yellow-400 shadow duration-300" style="--tw-bg-opacity: 0.3;"></div><div class="absolute p-5 -left-4 -top-4 rounded-full bg-yellow-300 shadow duration-150" style="--tw-bg-opacity: 0.12;"></div><div class="shadow absolute p-2 bottom-0 left-0 rounded-full bg-yellow-50 bg-blend-difference duration-200" style="--tw-bg-opacity: 0.1;"></div></div><label role="button" class="focus-within:border-yellow-200 focus-within:bg-yellow-100 border-transparent border-2 toggle-wrapper rounded shadow relative"><input type="checkbox" title="activate"><div class="px-1 tooltip to-left flex align-middle absolute rounded bg-white shadow items-center justify-center text-current p-0.5 text-center" data-details="[inactive]"><br><hr class="sep ver bulge-center border-0 p-0.5 h-full py-3 border-transparent">highlight</div><span class="toggle"></span></label><button class="hover:bg-yellow-300 fa fa-crosshairs p-1.5 mt-0 rounded shadow h-full relative ml-1"></button></div><output class="block p-1 font-semibold text-yellow-700 bg-gradient-to-r from-yellow-100 text-xs">Text</output><hr class="p-px bulge-center text-yellow-500 relative sep hor border-0"><!--no longer required
                               <span contenteditable=true data-placeholder='<Classname>' spellcheck=false class='relative outline-none overflow-scroll text-xs inline-block p-px shadow border-2 border-transparent' style='border-bottom-color: orange; max-width: 15vw; min-width:55px;'></span> 
                               <div class='relative flex items-start divide-x-1.5 divide-yellow-400' style='max-width: 15vw;'>
                                 <span contenteditable=true data-placeholder='<Attribute>' spellcheck=false class='text-gray-700 outline-none overflow-scroll whitespace-pre inline-block p-0.5 shadow border-2 border-transparent' style='border-bottom-color: orange; min-width:65px;'></span>
                                 <span contenteditable=true data-placeholder='<Value>' spellcheck=false class='text-gray-700 outline-none whitspace-pre overflow-scroll block p-0.5 shadow border-2 border-transparent' style='border-bottom-color: orange; min-width:58px;'></span>
-                              </div>--><div style="--tw-bg-opacity: 0.5" class="p-1 bg-yellow-50 shadow text-xs relative">[current]<hr class="p-0.5 rounded-md bg-gray-600 relative inline-block sep ver border-0"><div class="relative mt-1 flex"><span data-placeholder="DOM method" spellcheck="false" class="whitespace-pre bg-yellow-50 shadow p-0.5 outline-none" contenteditable="true" data-gramm="false" wt-ignore-input="true">append</span>(<button class="extrapolate-dom focus:bg-gray-800 text-yellow-200 p-1 bg-yellow-200 text-yellow-600 fa fa-sm fa-mouse-pointer"></button>)</div></div><button class="extrapolate-dom rounded-md focus:bg-yellow-200 focus:shadow text-xs font-sans relative whitespace-nowrap group"><i class="bg-yellow-100 p-2 relative rounded-full fa fa-bookmark -ml-1"></i><span class="duration-100 group-hover:bg-yellow-200 rounded p-0.5 py-1">delegate to</span></button></div><div><label role="button" style="--slider-checked-color:#ddd; --slider-rail-checked-color:#aaa;" class="focus-within:border-gray-500 focus-within:bg-gray-100 border-transparent border-2 toggle-wrapper rounded absolute bottom-full"><input type="checkbox" title="activate"><div class="flex items-center justify-between right-full mr-2 p-0.5 text-xs text-gray-600 bg-white shadow absolute"><hr class="sep ver rounded border-0 p-0.5 bg-gray-300 py-2.5 border-transparent">Enter:<span class="font-semibold m-px text-xs p-px bg-gray-100 rounded-sm">⊣⊢</span>maps to \n</div><span class="toggle" style="transform: scale(0.76);"></span></label><figure class="relative cursor-pointer flex" role="button"><i class="far text-md fa-trash-alt p-1 rounded bg-yellow-100 shadow"></i><figcaption class="p-1 text-xs bg-yellow-50 shadow">remove from page</figcaption></figure><hr class="p-px bulge-center text-gray-600 relative sep hor border-0"><h6 class="text-xs">Insertion direction</h6><div class="space-x-1 relative h-inherit items-center justify-center flex"><div tabindex="0" class="p-1.5 bg-gray-700 shadow inline-block rounded fa fa-chevron-up text-yellow-200" onclick="this.nextElementSibling.classList.remove('text-yellow-200'), this.nextElementSibling.classList.add('bg-yellow-200'), this.classList.remove('bg-yellow-200'), this.classList.add('text-yellow-200'), build.vars.dom_tree.editor.insertionDirection='UP'" role="button"></div><div tabindex="0" class="p-1.5 bg-gray-700 shadow inline-block rounded fa fa-chevron-down bg-yellow-200" onclick="this.previousElementSibling.classList.remove('text-yellow-200'), this.previousElementSibling.classList.add('bg-yellow-200'), this.classList.remove('bg-yellow-200'), this.classList.add('text-yellow-200'), build.vars.dom_tree.editor.insertionDirection='DOWN'" role="button"></div></div><label class="toggle-wrapper m-3.5 switch" style="--slider-checked-color:gray; --switch-size:12px;" role="button"><input type="checkbox"><div class="fa-xs px-1 tooltip to-right flex align-middle absolute rounded bg-white shadow items-center justify-center text-current p-0.5 text-center" data-details="[inactive]"><br><hr class="sep ver bulge-center border-0 p-0.5 h-full py-3 border-transparent">cloneNode(<div class="text-black border-current border-l border-r p-1 text-center mx-1 py-2" data-placeholder="deep" onclick="setTimeout(_=>this.focus(), 60)" spellcheck="false" contenteditable="true" data-gramm="false" wt-ignore-input="true">true</div>)</div><span class="slider"></span></label></div><!--[END]--></div></div></div></li><!--END--></ol></div></div></div><header class="p-3 bg-yellow-500 text-center"><i class="fa fa-exclamation-triangle p-2"> </i>site under construction<span class="p-1 text-white bg-yellow-600 ml-2 inline-block">updates are automatic</span></header><nav class="text-center p-2 relative">site wide | links | navigation</nav><main class="overflow-y-scroll overflow-x-hidden h-full relative border border-white" style="background:#222;"><section class="relative sm:w-4/5 md:w-2/3 lg:w-1/2" style="height:90%;"><div class="-top-12 bg-gradient-to-br from-red-900 via-gray-900 to-red-900 opacity-40 absolute inset-0 -bottom-10 -right-full"></div><div class="relative precise-typo font-fredoka sm:m-8 text-gray-200 m-4">Create crypto trading bots that work while you sleep<div class="mt-3 top-2/3 right-10 absolute sm:right-1/3 text-gray-300"> <p class="absolute text-sm text-current top-full mt-4 w-full text-center">#bot_4</p><div class="text-current font-serif text-base [&amp;>*]:inline-block text-center m-2 bot"><div class="border-4 p-0.5 rounded-full border-current py-2"><div class="relative"> <span class="border-4 inline-block rounded-full border-current mx-1.5"> </span><span class="border-4 inline-block rounded-full border-current mx-1.5"> </span></div></div><div class="border-4 mt-1 rounded-lg border-current relative w-1/2 py-5"><div class="h-full border-current border-4 absolute top-0 rotate-12 transform p-0.5 rounded-full right-full origin-top"> </div><div class="h-full border-current border-4 absolute top-0 -rotate-12 transform p-0.5 rounded-full left-full origin-top"> </div><div class="absolute h-5/6 border-4 px-1 border-current top-full rounded-b-lg left-1"> </div><div class="absolute h-5/6 border-4 px-1 border-current top-full rounded-b-lg right-1"> </div></div></div></div><button class="p-2 border-current text-yellow-500 border-4 rounded ripple font-semibold block mt-3" onclick="rAF(_=>objWalk(this, ['pN', {2:'nES'}, 'cL']).add('show'))">interact with a demo</button></div><article class="top-16 lg:w-2/3 sm:w-3/4 sm:mx-12 mx-4 relative sm:top-24 rounded text-gray-200"><h2 class="m-2 lg:text-base text-sm">• Bot Qualities</h2><aside class="text-current relative p-1.5" onclick="let ctx=objWalk(this, 'nES').children, t= event.target, ind = t.getAttribute('data-index'); t.tagName==='BUTTON'&amp;&amp;(hrTransit(this, ind), toggleTooltip(ctx, ind))"><button class="text-current ripple align-middle relative" data-index="0"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Names<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;"></span></button><button class="text-current ripple align-middle relative" data-index="1"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Activity<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;"></span></button><button class="text-current ripple align-middle relative" data-index="2"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Customization<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;"></span></button><button class="text-current ripple align-middle relative" data-index="3"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Color flags<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 0%;"></span></button></aside><main class="text-sm relative [&amp;>*]:p-2"><section class="relative tooltip no-hover no-focus slide no-focus-within">Bots can be given names in a linear fashion that can be used to interact with them via their <a href="javascript:void(0)" class="inline-block underline">various supported media</a><p class="my-2">These names are used as hashes and contain an underscore in lieu of spaces as follows</p><div class="md:text-2xl relative font-fredoka text-lg" oninput="let t=event.target, bool=['', 'bot_'], val=t.value;
+                              </div>--><div style="--tw-bg-opacity: 0.5" class="p-1 bg-yellow-50 shadow text-xs relative">[current]<hr class="p-0.5 rounded-md bg-gray-600 relative inline-block sep ver border-0"><div class="relative mt-1 flex"><span data-placeholder="DOM method" spellcheck="false" class="whitespace-pre bg-yellow-50 shadow p-0.5 outline-none" contenteditable="true" data-gramm="false" wt-ignore-input="true">append</span>(<button class="extrapolate-dom focus:bg-gray-800 text-yellow-200 p-1 bg-yellow-200 text-yellow-600 fa fa-sm fa-mouse-pointer"></button>)</div></div><button class="extrapolate-dom rounded-md focus:bg-yellow-200 focus:shadow text-xs font-sans relative whitespace-nowrap group"><i class="bg-yellow-100 p-2 relative rounded-full fa fa-bookmark -ml-1"></i><span class="duration-100 group-hover:bg-yellow-200 rounded p-0.5 py-1">delegate to</span></button></div><div><label role="button" style="--slider-checked-color:#ddd; --slider-rail-checked-color:#aaa;" class="focus-within:border-gray-500 focus-within:bg-gray-100 border-transparent border-2 toggle-wrapper rounded absolute bottom-full"><input type="checkbox" title="activate"><div class="flex items-center justify-between right-full mr-2 p-0.5 text-xs text-gray-600 bg-white shadow absolute"><hr class="sep ver rounded border-0 p-0.5 bg-gray-300 py-2.5 border-transparent">Enter:<span class="font-semibold m-px text-xs p-px bg-gray-100 rounded-sm">⊣⊢</span>maps to \n</div><span class="toggle" style="transform: scale(0.76);"></span></label><figure class="relative cursor-pointer flex" role="button"><i class="far text-md fa-trash-alt p-1 rounded bg-yellow-100 shadow"></i><figcaption class="p-1 text-xs bg-yellow-50 shadow">remove from page</figcaption></figure><hr class="p-px bulge-center text-gray-600 relative sep hor border-0"><h6 class="text-xs">Insertion direction</h6><div class="space-x-1 relative h-inherit items-center justify-center flex"><div tabindex="0" class="p-1.5 bg-gray-700 shadow inline-block rounded fa fa-chevron-up text-yellow-200" onclick="this.nextElementSibling.classList.remove('text-yellow-200'), this.nextElementSibling.classList.add('bg-yellow-200'), this.classList.remove('bg-yellow-200'), this.classList.add('text-yellow-200'), build.vars.dom_tree.editor.insertionDirection='UP'" role="button"></div><div tabindex="0" class="p-1.5 bg-gray-700 shadow inline-block rounded fa fa-chevron-down bg-yellow-200" onclick="this.previousElementSibling.classList.remove('text-yellow-200'), this.previousElementSibling.classList.add('bg-yellow-200'), this.classList.remove('bg-yellow-200'), this.classList.add('text-yellow-200'), build.vars.dom_tree.editor.insertionDirection='DOWN'" role="button"></div></div><label class="toggle-wrapper m-3.5 switch" style="--slider-checked-color:gray; --switch-size:12px;" role="button"><input type="checkbox"><div class="fa-xs px-1 tooltip to-right flex align-middle absolute rounded bg-white shadow items-center justify-center text-current p-0.5 text-center" data-details="[inactive]"><br><hr class="sep ver bulge-center border-0 p-0.5 h-full py-3 border-transparent">cloneNode(<div class="text-black border-current border-l border-r p-1 text-center mx-1 py-2" data-placeholder="deep" onclick="setTimeout(_=>this.focus(), 60)" spellcheck="false" contenteditable="true" data-gramm="false" wt-ignore-input="true">true</div>)</div><span class="slider"></span></label></div><!--[END]--></div></div></div></li><!--END--></ol></div></div></div><header class="p-3 bg-yellow-500 text-center"><i class="fa fa-exclamation-triangle p-2"> </i>site under construction<span class="p-1 text-white bg-yellow-600 ml-2 inline-block">updates are automatic</span></header><nav class="text-center p-2 relative">site wide | links | navigation</nav><main class="overflow-y-scroll overflow-x-hidden h-full relative border border-white" style="background:#222;"><section class="relative sm:w-4/5 md:w-2/3 lg:w-1/2" style="height:90%;"><div class="-top-12 bg-gradient-to-br from-red-900 via-gray-900 to-red-900 opacity-40 absolute inset-0 -bottom-10 -right-full"></div><div class="relative precise-typo font-fredoka sm:m-8 text-gray-200 m-4">Create crypto trading bots that work while you sleep<div class="mt-3 top-2/3 right-10 absolute sm:right-1/3 text-pink-300"> <p class="absolute text-sm text-current top-full mt-4 w-full text-center">#bot_4</p><div class="text-current font-serif text-base [&amp;>*]:inline-block text-center m-2 bot"><div class="border-4 p-0.5 rounded-full border-current py-2"><div class="relative"> <span class="border-4 inline-block rounded-full border-current mx-1.5"> </span><span class="border-4 inline-block rounded-full border-current mx-1.5"> </span></div></div><div class="border-4 mt-1 rounded-lg border-current relative w-1/2 py-5"><div class="h-full border-current border-4 absolute top-0 rotate-12 transform p-0.5 rounded-full right-full origin-top"> </div><div class="h-full border-current border-4 absolute top-0 -rotate-12 transform p-0.5 rounded-full left-full origin-top"> </div><div class="absolute h-5/6 border-4 px-1 border-current top-full rounded-b-lg left-1"> </div><div class="absolute h-5/6 border-4 px-1 border-current top-full rounded-b-lg right-1"> </div></div></div></div><button class="p-2 border-current text-yellow-500 border-4 rounded ripple font-semibold block mt-3" onclick="rAF(_=>objWalk(this, ['pN', {2:'nES'}, 'cL']).add('show'))">interact with a demo</button></div><article class="top-16 lg:w-2/3 sm:w-3/4 sm:mx-12 mx-4 relative sm:top-24 rounded text-gray-200"><h2 class="m-2 lg:text-base text-sm">• Bot Qualities</h2><aside class="text-current relative p-1.5" onclick="let ctx=objWalk(this, 'nES').children, t= event.target, ind = t.getAttribute('data-index'); t.tagName==='BUTTON'&amp;&amp;(hrTransit(this, ind), toggleTooltip(ctx, ind))"><button class="text-current ripple align-middle relative" data-index="0"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Names<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;"></span></button><button class="text-current ripple align-middle relative" data-index="1"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Activity<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;"></span></button><button class="text-current ripple align-middle relative" data-index="2"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Customization<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;"></span></button><button class="text-current ripple align-middle relative" data-index="3"><span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">Color flags<hr class="p-px rounded-t transition-hr bottom-0.5 border-0 bg-red-300 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 0%;"></span></button></aside><main class="text-sm relative [&amp;>*]:p-2"><section class="relative tooltip no-hover no-focus slide no-focus-within">Bots can be given names in a linear fashion that can be used to interact with them via their <a href="javascript:void(0)" class="inline-block underline">various supported media</a><p class="my-2">These names are used as hashes and contain an underscore in lieu of spaces as follows</p><div class="md:text-2xl relative font-fredoka text-lg" oninput="let t=event.target, bool=['', 'bot_'], val=t.value;
 val&amp;&amp;page.onboard_bot.name('#'+bool[+(t.type==='number')]+val)
 " onclick="let t=event.target, val=+t.value, bool=['', 'bot_'];
 console.log(val, !!val), val&amp;&amp;page.onboard_bot.name('#'+bool[+(t.type==='number')]+val)
 ">#<div class="text-sm font-sans ml-3 inline-block p-2 border bg-gray-50 border-gray-500 text-gray-100" spellcheck="false" contenteditable="true" data-placeholder="the name of your bot" style="--tw-bg-opacity:.1" data-gramm="false" wt-ignore-input="true"></div><span class="mx-4 font-serif text-sm">or</span><div class="mt-2 inline-block"><code class="align-bottom">bot</code><hr class="relative px-3 inline-block align-bottom"><input class="p-2 border bg-gray-50 border-gray-500 text-gray-100 w-20" style="--tw-bg-opacity: .1" type="number" placeholder="value"></div></div></section><section class="tooltip no-hover no-focus no-focus-within slide absolute inset-0">Bots can have multiple states, toggle the states below and see demo for results<div class="m-2 block [&amp;>*]:p-2" onclick="let t=event.target; t.tagName==='BUTTON'&amp;&amp;(forEach(this.children, e=>e.classList[t===e?'add':'remove']('border-2')), page.onboard_bot.active(/de/.test(t.textContent)))"><button class="text-current ripple relative rounded-l-md border-r-2 border-gray-400">activated
-</button><button class="text-current ripple relative rounded-r-md border-l-2 border-gray-400 border-2">deactived</button></div>You can define more states and also learn more when you <a class="bg-gray-700 inline-block p-2">open an account</a></section><section class="tooltip no-hover no-focus no-focus-within slide absolute inset-0">Bots can be customized in both their appearance and functionality<div class="mt-2"><strong class="text-2xl" style="line-height:0;">•</strong> Appearance</div><div class="my-4 m-2 inline-block [&amp;>*]:p-2" onclick="let t=event.target, bool=[-1, 1][+(t.textContent.charAt(0)==='n')]; forEach(this.children, e=>e.classList[t===e?'add':'remove']('border-2')), page.onboard_bot.width(bool)"><button class="text-current ripple relative rounded-l-md border-r-2 border-gray-400 border-2"><i class="fa fa-arrow-left mr-2"></i>previous appearance</button><button class="text-current ripple relative rounded-r-md border-l-2 border-gray-400">next appearance<i class="ml-2 fa fa-arrow-right"></i></button></div></section><section class="tooltip no-hover no-focus no-focus-within slide absolute inset-0 show">Bots can be given colours to indicate market trends or condition. They serve as a quick visual aid<div>Users eventually decide what each colour means ..</div><div class="mt-3">A minimal colour swatch</div><div class="whitespace-pre [&amp;>*]:p-2 space-x-3 [&amp;>*]:inline-block p-2 [&amp;>*]:bg-current:border-8:border-current relative" onclick="let cls='', i=0, pad=44, t=event.target, box=this.lastElementChild.style, arr=['pink', 'red', 'yellow', 'gray', 'green', 'purple', 'indigo', 'blue'];
+</button><button class="text-current ripple relative rounded-r-md border-l-2 border-gray-400 border-2">deactived</button></div>You can define more states and also learn more when you <a class="bg-gray-700 inline-block p-2">open an account</a></section><section class="tooltip no-hover no-focus no-focus-within slide absolute inset-0">Bots can be customized in both their appearance and functionality<div class="mt-2"><strong class="text-2xl" style="line-height:0;">•</strong> Appearance</div><div class="my-4 m-2 inline-block [&amp;>*]:p-2" onclick="let t=event.target, bool=[-1, 1][+(t.textContent.charAt(0)==='n')]; forEach(this.children, e=>e.classList[t===e?'add':'remove']('border-2')), page.onboard_bot.width(bool)"><button class="text-current ripple relative rounded-l-md border-r-2 border-gray-400 border-2"><i class="fa fa-arrow-left mr-2"></i>previous appearance</button><button class="text-current ripple relative rounded-r-md border-l-2 border-gray-400">next appearance<i class="ml-2 fa fa-arrow-right"></i></button></div></section><section class="tooltip no-hover no-focus no-focus-within slide absolute inset-0 show">Bots can be given colours which serve as quick visual aids to indicate market trends or conditions.<div>Users eventually decide what each colour means.</div><div class="mt-3">A minimal colour swatch</div><div class="whitespace-pre [&amp;>*]:p-2 space-x-3 [&amp;>*]:inline-block p-2 [&amp;>*]:bg-current:border-8:border-current relative" onclick="let cls='', i=0, pad=44, t=event.target, box=this.lastElementChild.style, arr=['pink', 'red', 'yellow', 'gray', 'green', 'purple', 'indigo', 'blue'];
 if(t.classList.length===1&amp;&amp;arr.find((e, _i)=>(i=_i, t.className===(cls='text-'+e+'-300')))) {
   box.setProperty('--tw-translate-x', (pad*i)+'px'),
   page.onboard_bot.color(cls)
@@ -759,7 +1067,7 @@ if(t.classList.length===1&amp;&amp;arr.find((e, _i)=>(i=_i, t.className===(cls='
     page.onboard_bot.color(cls)
   }
 }, false)
-"><div class="text-pink-300"></div><div class="text-red-300"></div><div class="text-yellow-300"></div><div class="text-gray-300"></div><div class="text-green-300"></div><div class="text-purple-300"></div><div class="text-indigo-300"></div><div class="text-blue-300"></div><div class="absolute text-white -left-2.5 top-0.5 transform pointer-events-none" style="background: transparent; border-width: 4px; padding: 1.1rem; --tw-translate-x: 132px;"></div></div></section></main></article><article class="sm:mt-14 pt-2 sm:inset-3 inset-1 absolute rounded-2xl top-16 tooltip no-hover no-focus no-focus-within -slide-y" style="--focus-within-no-focus-transition: opacity 0.5s ease, transform 0.3s 0.05s ease-out, visibility 0s 0.12s;" id="onboard_demo"><header class="relative rounded-xl h-12 bg-white"><button class="bg-inherit p-2 h-full relative ripple border border-gray-500 rounded-tl-xl px-3" onclick="objWalk(this, [{2:'pN'}, 'cL']).remove('show')"><i class="fa fa-times align-middle text-xl m-2"> </i>close</button><button class="mx-8 border-gray-300 h-full border-l-2 border-r-2 ripple relative bg-gray-200" onclick="objWalk(this, ['pN', 'nES', {2:'fEC'}, 'cL']).add('show')/*objWalk(this, ['pN', 'cL']).toggle('h-full'), this.firstElementChild.classList.toggle('fa-expand-alt')*/">configure bot
+"><div class="text-pink-300"></div><div class="text-red-300"></div><div class="text-yellow-300"></div><div class="text-gray-300"></div><div class="text-green-300"></div><div class="text-purple-300"></div><div class="text-indigo-300"></div><div class="text-blue-300"></div><div class="absolute text-white -left-2.5 top-0.5 transform pointer-events-none" style="background: transparent; border-width: 4px; padding: 1.1rem; --tw-translate-x: 0px;"></div></div></section></main></article><article class="sm:mt-14 pt-2 sm:inset-3 inset-1 absolute rounded-2xl top-16 tooltip no-hover no-focus no-focus-within -slide-y" style="--focus-within-no-focus-transition: opacity 0.5s ease, transform 0.3s 0.05s ease-out, visibility 0s 0.12s;" id="onboard_demo"><header class="relative rounded-xl h-12 bg-white"><button class="bg-inherit p-2 h-full relative ripple border border-gray-500 rounded-tl-xl px-3" onclick="objWalk(this, [{2:'pN'}, 'cL']).remove('show')"><i class="fa fa-times align-middle text-xl m-2"> </i>close</button><button class="mx-8 border-gray-300 h-full border-l-2 border-r-2 ripple relative bg-gray-200" onclick="objWalk(this, ['pN', 'nES', {2:'fEC'}, 'cL']).add('show')/*objWalk(this, ['pN', 'cL']).toggle('h-full'), this.firstElementChild.classList.toggle('fa-expand-alt')*/">configure bot
 <i class="align-bottom ml-1 text-lg fa fa-cog"></i></button><button onclick="this.textContent = objWalk(this, ['pN', 'nES', 'lEC', 'cL']).toggle('show') ? '← back to interactive demo' : 'open an account and make this bot yours →'" class="px-2 p-1 bg-white relative underline text-gray-700 inline-block text-xs mr-8 rounded">open an account and make this bot yours →</button><a class="text-gray-600 focus:text-yellow-700 right-0 bottom-0 text-xs absolute m-1.5 inline-block" href="#onboard_demo"><div class="bg-gray-50 rounded border-2 border-gray-200 pb-2 p-1.5 whitespace-pre tooltip absolute to-left -mr-0.5" style="--arrow-size:5px;">anchor section to top of page</div><i class="fa fa-anchor border-2 border-current text-current rounded-full p-2.5 bg-gray-100" style="--tw-bg-opacity:.5; " "=""></i></a></header><section class="mt-5 top-16 container text-sm absolute inset-0 overflow-hidden show"><main id="demo-chart" class="relative h-full"> <section class="sm:border-2 border bg-gray-50 rounded-lg sm:left-1/4 sm:inset-1 inset-3.5 absolute tooltip no-hover no-focus no-focus-within slide text-xs [&amp;>*]:p-2" style="--focus-within-no-focus-transition: opacity 0.5s ease, transform 0.3s 0.05s ease-out, visibility 0s 0.12s;">
   <button class="m-1 ripple relative" onclick="objWalk(this, ['pN', 'cL']).remove('show')"><i class="px-3.5 rounded-full fa border-gray-300 fa-times p-3 border-2"></i></button><div>this section wil contain minimal tweaks and bot activities that will just engage visitors to click on the link below to "make this bot theirs"</div><p class="mb-4 mt-4 relative bg-blue-100 p-3 border-t"><i class="m-1 mr-2 fa fa-lock"></i>the settings below require an account to work properly</p><div class="relative text-center mt-1 [&amp;>*]:inline-block"><div class="relative"><p tabindex="0" class="border-gray-400 rounded-bl-md sm:pr-6 p-2 border-b border-l border-r bg-white sm:whitespace-pre">select your strategy ⇲</p>
 <div class="bottom-full w-full absolute mb-2 rounded-md bg-gray-100 text-red-300 [&amp;>*]:w-full [&amp;>*]:block tooltip [&amp;>*]:p-2 divide-y-2 divide-gray-300 group-hover">
@@ -2204,4 +2512,4 @@ console.log(socket);
 (objWalk.setDict =function(arr){
   objWalk.dict||={};
   if(arr) for(let str, val, i = arr.length; i;  str=(val=arr[--i]).charAt(0), val.replace(/[A-Z]/g, _=>str+=_), objWalk.dict[str]=val);
-})(['classList', 'previousSibling', 'nextSibling',  'lastChild', 'firstChild', 'nextElementSibling', 'previousElementSibling', 'parentNode', 'lastElementChild', 'childNodes', 'firstElementChild']);</script><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-root></quillbot-extension-root></html>
+})(['classList', 'previousSibling', 'nextSibling',  'lastChild', 'firstChild', 'nextElementSibling', 'previousElementSibling', 'parentNode', 'lastElementChild', 'childNodes', 'firstElementChild']);</script><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-root></quillbot-extension-root></body><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-root></quillbot-extension-root></html>
