@@ -11,7 +11,7 @@ mDize =obj=>prot_F.call.bind(obj),O=Object,prot_O = prot(O),_toString = mDize(pr
   H = HTMLElement,prot_H=prot(H),
   gC = w.getComputedStyle, S = Set, M = Math, N = Number, R = RegExp, qsa=domstr=>slice(d.querySelectorAll(domstr)),
   qs=domstr=>d.querySelector(domstr), html = d.documentElement, getStyle=(el, prop)=>gC(el)[prop],
-  promisify=cb=>new Promise(resolve=>setTimeout(_=>resolve(cb())));
+  promisify=cb=>new Promise(resolve=>setTimeout(_=>resolve(cb()))), map = mDize([].map);
 
   function Is(entity, type) {
       let a = entity==void 0?_toString(entity).replace(/\[object |\]/g ,''):entity.constructor.name
@@ -56,26 +56,36 @@ function byteFormat(num, res='') {
   }
   return res
 }
-function toggle(index) {
-  (toggle.asides ||= map(objWalk(pageData.fileDetails[0], [{2:'pN'},{1:['nES', 'lEC']}, 'children']), e=>e.classList))
-  [(index+1)%2].remove('show'),
-  toggle.asides[index].add('show')
-}
-function hrTransit(index, other, dir) {
-  hrTransit.watch = (++hrTransit.watch||0)%2,
-  hrTransit.arr||=map(objWalk(pageData.fileDetails[0], [{2:'pN'},'nES'])
-  .querySelectorAll('button>span>hr'), (e, i, a, _)=>(!((hrTransit.values||=[])[i]=+(_=((hrTransit.hrs||=[])[i]=e).style).getPropertyValue('--tw-translate-x').replace('%', ''))&&(hrTransit.index||=i), _)),
-  other = (index + 1)%2; /* 2: length of hrTransit.arr*/
-  if(hrTransit.index!==index) {
-    dir = (hrTransit.index < index ? '' : '-')+'101%';
-    hrTransit.hrs[other].ontransitionend=function() {
-      hrTransit.arr[other].setProperty('--tw-translate-x', dir),
-      this.ontransitionend = hrTransit.arr[index].setProperty('--tw-translate-x', '0%')
-    },
-    hrTransit.arr[other].setProperty('--tw-translate-x', dir),
-    hrTransit.index = index
+function toggleTooltip(nodes, index, len) {
+   if(len=nodes.length) {
+    for(let i = len; i--; ) nodes[i].classList[i==index?'add':'remove']('show');
   }
 }
+function hrTransit(ctx, index, pad, other, dir, recondex, cped) {
+ cped = (hrTransit.recon ||= [[], []]);
+ if(ctx) {
+  index = +index;
+  hrTransit.ctx !== ctx &&(hrTransit.ctx = ctx, hrTransit.arr=map(ctx.querySelectorAll('span >hr'),
+(e, i, a, _, _1)=>(!((hrTransit.values||=[])[i]=+(_=((hrTransit.hrs||=[])[i]=e).style).getPropertyValue('--tw-translate-x').replace('%', ''))&&(hrTransit.index=i), _))),
+  other = hrTransit.index;
+  if(hrTransit.index!==index) {
+   dir = (hrTransit.index <index ? '' : '-')+`${110+(pad||'')}%`,
+   hrTransit.hrs[other].ontransitionend=function() {
+    hrTransit.arr[other].setProperty('--tw-translate-x', dir),
+    this.ontransitionend = hrTransit.arr[index].setProperty('--tw-translate-x', '0%'),
+        hrTransit.arr.forEach((e, i, arr)=>{
+         i !==index &&(
+            e.setProperty('--tw-translate-x', (i >index?'-':'')+`${110+(pad||'')}%`)
+          )
+        })
+   },
+   hrTransit.arr[other].setProperty('--tw-translate-x', dir),
+   hrTransit.index = index,
+   cped[0][recondex]===ctx &&(cped[1][recondex] = index)
+  }
+ }
+}
+
 function minMax(obj, isRem, arr=['min','max'], vary, cnst, fn, str) {
   minMax.switch = fn = (value, isRem) => isRem ? value*16 : value/16,
     
