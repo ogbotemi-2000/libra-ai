@@ -8,31 +8,36 @@
 </head>
 
 <body class="text-center">
-<form class="inline-block relative text-center top-12 p-2">
-  <aside class="[&amp;>*]:p-2 show" onclick="let ctx = objWalk(this, 'nES').children, t = event.target, bool=+/Sign in/.test(t.textContent);
-    t.tagName==='BUTTON'&amp;&amp;(hrTransit(this, bool), toggleTooltip(ctx, bool))
-    ">
+<form onsubmit="let signin=this.getAttribute('data-signin'), arr=['up', 'in']; this.which.value=arr[signin]" class="inline-block relative text-center top-12 p-2" method="POST" action='/sign' data-signin="0">
+  <input class='hidden' tabindex="-1" type="text" name="which" value="up">
+  <aside class="[&amp;>*]:p-2 show" onclick="let inputs, ctx = objWalk(this, 'nES').children, t = event.target, bool=+/Sign in/.test(t.textContent);
+    t.tagName==='BUTTON'&amp;&amp;(hrTransit(this, bool), toggleTooltip(ctx, bool)),
+    this.parentNode.setAttribute('data-signin', bool),
+    inputs = [0, 1].map(e=>slice(this.parentNode.inputs.children[e].querySelectorAll('input'))),
+    inputs.forEach((arr, i)=>arr.forEach(input=>input[(bool===i?'set':'remove')+'Attribute']('required', '')))
+   ">
     <button class="ripple align-middle relative" type="button">
       <span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">
         Sign up
-        <hr class="transition-hr bottom-px border-0 bg-gray-800 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 110%;">
+        <hr class="transition-hr bottom-px border-0 bg-gray-800 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 0%;">
       </span>
     </button>
     <span style="padding:0" class="bulge-center font-mono text-gray-700 inline-flex relative mx-6 text-sm h-14 w-px flex items-center justify-center"><span class="p-2 text-black bg-white">or</span></span>
     <button class="ripple align-middle relative" type="button">
       <span class="pointer-events-none py-2 overflow-hidden inline-block p-px relative">
         Sign in
-        <hr class="transition-hr bottom-px border-0 bg-gray-800 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: 0%;">
+        <hr class="transition-hr bottom-px border-0 bg-gray-800 absolute left-0 right-0 h-0.5 w-full transform-gpu" style="--tw-translate-x: -110%;">
       </span>
     </button>
   </aside>
-  <fieldset class="relative my-8 rounded-lg">
-    <main class="tooltip no-hover no-focus no-focus-within slide compact relative">
+  <fieldset class="relative my-8 rounded-lg" name="inputs">
+    <main style="--focus-within-no-focus-transition: opacity 0.5s ease, transform 0.3s 0.05s ease-out, visibility 0s 0.12s;" class="tooltip no-hover no-focus no-focus-within slide compact relative show">
       <div class="relative">
         <input required class="relative focus:outline-none block bg-transparent text-sm p-1.5 w-full border-0 border-gray-900" title="Username" name="up_uname" style="border-bottom-width: 1px;" oninput=""><span class="left-0 absolute opacity-50 h-full w-10 top-0 pointer-events-none"></span>
         <div class="w-full relative pointer-events-none"></div>
         <label class="whitespace-pre pointer-events-none text-gray-500 text-sm absolute left-1 top-0">Email address</label>
       </div>
+      <div class="tooltip no-hover no-focus slide text-red-600 p-1 text-sm text-left">Error message goes here</div>
       <br><br>
       <div class="relative">
         <input required type="password" name="up_pwd" class="relative focus:outline-none block bg-transparent text-sm p-1.5 w-64 border-0 border-gray-900" title="Password with at least Aa, 1-9 or #$@!" name="up_pwd" style="border-bottom-width: 1px;"><span class="left-0 absolute opacity-50 h-full w-10 top-0 pointer-events-none"></span>
@@ -40,15 +45,15 @@
         <label class="whitespace-pre pointer-events-none text-gray-500 text-sm absolute left-0 top-0">Password with at least Aa, 1-9 or #$@!</label>
       </div>
     </main>
-    <aside style="--focus-within-no-focus-transition: opacity 0.5s ease, transform 0.3s 0.05s ease-out, visibility 0s 0.12s;" class="compact tooltip no-hover no-focus no-focus-within slide absolute inset-0 items-center show">
+    <aside style="--focus-within-no-focus-transition: opacity 0.5s ease, transform 0.3s 0.05s ease-out, visibility 0s 0.12s;" class="compact tooltip no-hover no-focus no-focus-within slide absolute inset-0 items-center">
       <div class="relative">
-        <input required class="relative focus:outline-none block bg-transparent text-sm p-1.5 w-full border-0 border-gray-900" title="Username or Email" name="in_umail" style="border-bottom-width: 1px;"><span class="left-0 absolute opacity-50 h-full w-10 top-0 pointer-events-none"></span>
+        <input class="relative focus:outline-none block bg-transparent text-sm p-1.5 w-full border-0 border-gray-900" title="Username or Email" name="in_umail" style="border-bottom-width: 1px;"><span class="left-0 absolute opacity-50 h-full w-10 top-0 pointer-events-none"></span>
         <div class="w-full relative pointer-events-none"></div>
         <label class="whitespace-pre pointer-events-none text-gray-500 text-sm absolute left-1 top-0">Username or Email</label>
       </div>
       <br><br>
       <div class="relative">
-        <input title='Password' required type="password" class="relative focus:outline-none block bg-transparent text-sm p-1.5 w-full border-0 border-gray-900" title="Password with at least Aa, 1-9 or #$@!" name="in_pwd" style="border-bottom-width: 1px;" oninput=""><span class="left-0 absolute opacity-50 h-full w-10 top-0 pointer-events-none"></span>
+        <input title='Password' type="password" class="relative focus:outline-none block bg-transparent text-sm p-1.5 w-full border-0 border-gray-900" title="Password with at least Aa, 1-9 or #$@!" name="in_pwd" style="border-bottom-width: 1px;" oninput=""><span class="left-0 absolute opacity-50 h-full w-10 top-0 pointer-events-none"></span>
         <div class="w-full relative pointer-events-none"></div>
         <label class="whitespace-pre pointer-events-none text-gray-500 text-sm absolute top-0 left-0">Password</label>
       </div>

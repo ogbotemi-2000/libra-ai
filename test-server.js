@@ -45,7 +45,11 @@ let port;
 app.listen(port=+values['-p'], function() {
   console.log('Server listening on <PORT>', port, 'under <DIRECTORY>', values['-d'], 'and serving assets from <DIRECTORY>', values['-a']);
 })
+/** end of boilerplate code */
 
+let sign         = require('./sign')
+
+app.post('/sign', sign);
 
 /*
 app.get("/video", function (req, res) {

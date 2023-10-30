@@ -235,9 +235,10 @@
 
 	*/
 
- font-size: calc(110px + (240 - 100) * ((100vw - 400px) / (1200 - 400))) } .fluid-fontsize  {
+ font-size: calc(110px + (240 - 100) * ((100vw - 400px) / (1200 - 400))) } 
+ .fluid-fontsize  {
 
-	 clamp(1rem, 0.095rem + 3.45vw, 1.75rem);
+	 font-size: clamp(1rem, 0.095rem + 3.45vw, 1.75rem);
 
 }
 
