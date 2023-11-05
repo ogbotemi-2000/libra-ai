@@ -1,90 +1,59 @@
-let path    		 	   = require('path'),
-    express			 	   = require("express"),
-    app     		 	   = express(),
-		jwt				 	   = require('jsonwebtoken'),
-		redis			 	   = require('redis'),
-		secret			 	   = '3c458ea2ba35c08d0758106f3d52797630f92f8c915c04e2670201032ac477bc73bbd9',
-		// creating 24 hours from milliseconds
-		oneDay			 	   = 1000 * 60 * 60 * 24,
-		redisCl			 	   = redis.createClient(),
-		jwt_secret 		 	   = "jwtfanhere",
-		jwt_expiration 	 	   = 60 * 10,
-		jwt_refresh_expiration = 60 * 60 * 24 * 30,
-		mysql = require('mysql2'),
-		pool  = mysql.createPool({
-			connectionLimit : 10,
-			host            : 'localhost',
-			user            : 'root',
-			password        : '2#@Are_1',
-			database        : 'sys'
+let path    = require('path'),
+	db	 	= require('./db'),
+	session = require('./session'),
+	sign 	= {
+	  up:function(data, res, users) {
+		users = {"email":data[0][1], "password":btoa(data[1][1]), "username":''}
+		console.log('SIGNING UP::', this, data);
+		  db.on('pooled', function(connection) {
+		    console.log('connected as id ' + connection.threadId)
 		}),
-	
-		/**
-		 * Templates called into connection.query
-		 * `INSERT INTO programming_languages 
-    (name, released_year, githut_rank, pypl_rank, tiobe_rank) 
-    VALUES 
-    ('${programmingLanguage.name}', ${programmingLanguage.released_year}, ${programmingLanguage.githut_rank}, ${programmingLanguage.pypl_rank}, ${programmingLanguage.tiobe_rank})`
-
-		`UPDATE programming_languages 
-    SET name="${programmingLanguage.name}", released_year=${programmingLanguage.released_year}, githut_rank=${programmingLanguage.githut_rank}, 
-    pypl_rank=${programmingLanguage.pypl_rank}, tiobe_rank=${programmingLanguage.tiobe_rank} 
-    WHERE id=${id}` 
-
-		`DELETE FROM programming_languages WHERE id=${id}`
-
-		Store Procedures (created in the database)
-		----------------
-		DELIMITER $$
-CREATE PROCEDURE `sp_search_programming_languages_by_id`(in langid int)
-BEGIN
-    SELECT name, githut_rank, pypl_rank, tiobe_rank, created_at
-    FROM programming_languages
-    where id = langid;
-END $$
-
-		 */
-		sign = {
-			up:function(data, res) {
-				console.log('SIGNING UP::', this, data);
-				pool.getConnection((err, connection) => {
-					if(err) throw err;
-
-					console.log('connected as id ' + connection.threadId)
-					connection.connect(function(err){
-						if(err) console.error('Error in connecting database...', err);
-					})
-					connection.query('SELECT * from users', (err, rows) => {
-					  connection.release() // return the connection to pool
-						if (err) {
-							console.log(err)
-						} else {
-							res.send(rows)
-						}
-					})
+		  db.query('INSERT INTO users SET ?', users, function (error, results, fields) {
+			if (error) {
+				res.send({
+				"code":400,
+				"failed":"error ocurred",
+				error
 				})
-	
-	
+			} else {
+				res.send({
+					"code":200,
+					"success":"user registered sucessfully",
+					results,
+					error,
+					fields
+				});
 			}
-		};
-
+		  })
+		}
+	};
 
 module.exports = function(req, res, next) {
 	//incoming data will be small, hence no need for req.on('end')
-	req.on('data', function(data, which) {
+	req.on('data', function(data, which, viaIframe) {
 		data=decodeURIComponent(data).split('&'),
 		which = data.shift().split('=')[1].toLowerCase(),
-		data = data.filter(e=>new RegExp('^'+which).test(e)),
-		sign[which](data, res)
+		viaIframe = /iframe/.test(req.headers['sec-fetch-dest']),
+		data = data.filter(e=>new RegExp('^'+which).test(e)).map(e=>e.split('=')),
+		sign[which](data, res, viaIframe)
 	})
 };
-sign.in = function(data) {
-		console.log('SIGNING IN::', data)
+
+sign.in = function(data, res, viaIframe) {
+  data = data.map(e=>e[1]),
+  db.query(`SELECT id, email, password, username FROM users WHERE ${db.column(data[0])} = ?`, data[0], function(err, result){
+	if(result&&result.length) {
+		let {id, email, password, username} = result[0];
+		session.refresh(id, session.refresh_token(64), res).then(uid=>{
+		  viaIframe?res.send('INTERIM'):res.redirect('/dashboard')
+		})
+	}
+  })
 }
 
-app.get("/users/:userId/books/:bookId", (req, res) => {
-	// Access userId via: req.params.userId
-	// Access bookId via: req.params.bookId
-	res.send(req.params);
-});
+// app.get("/users/:userId/books/:bookId", (req, res) => {
+// 	// Access userId via: req.params.userId
+// 	// Access bookId via: req.params.bookId
+// 	res.send(req.params);
+// });
 //users/34/books/8989

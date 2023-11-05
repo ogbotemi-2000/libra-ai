@@ -4,10 +4,13 @@ const express = require('express'),
       path    = require('path'),
       argv    = process.argv.slice(2),
       check   = (a, o, i)=>a[i]?.match(o[i/2]),
-      defs    = ['./', 3000, './'],
       options = ['-a', '-p', '-d'],
       values  = {},
-      msgs    =[];
+      msgs    = [],
+      //modules pertaining to app
+      session = require('./session'),
+      env     = require('./env.json'),
+      defs    = ['./', env.PORT, './'];
 
 defs.map((e, i)=>values[options[i]]=e);
 
@@ -47,10 +50,60 @@ app.listen(port=+values['-p'], function() {
 })
 /** end of boilerplate code */
 
-let sign         = require('./sign')
 
-app.post('/sign', sign);
 
+let sign = require('./sign'),
+    db   = require('./db'),
+    cookies = require("cookie-parser"),
+    views   = require('./views');
+
+app.use(cookies());
+app.get('/sign', function(req, res) {
+  session.validateJWT(req, res)
+  .then(id=>{
+    db.user(id, (err, result)=>{
+      if(err) /*handle error*/;
+      views.signed(req, res, result)
+    })
+  })
+  .catch(err=>{
+    console.log(err)
+    res.sendFile('sign.html', {root:'./'})
+  })
+})
+app.post('/sign', sign),
+app.post('/logout', session.logout),
+app.get("/dashboard", (req, res, next) => {
+  // let's say that the unknown user wants to edit some profile
+  session.validateJWT(req, res).then(id => {
+    db.user(id, (err, result)=>{
+      if(err) throw err;
+      res.send(views.dash(result[0]))
+    })
+  })
+  .catch(error => {
+      res.redirect('/sign')
+  })
+}),
+
+app.get('/exists', function(req, res){
+  let email, obj, which, column;
+  for(let i in obj=req.query) which=(email = i).split('_')[0];
+
+  column=db.column(obj[email]),
+  db.exists('users', [column, obj[email]], function(err, result, meta){
+    let len=result.length, message;
+    console.log('\nRESULT::', result)
+    switch(which) {
+      case 'up':
+        message = !len?'':"Sorry, that's taken, try a unique email"
+      break;
+      case 'in':
+      message=len?'':'Perhaps you do not have an account yet'
+    }
+    res.send(message)
+  })
+})
 /*
 app.get("/video", function (req, res) {
     const range = req.headers.range;
