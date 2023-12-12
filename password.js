@@ -1,33 +1,43 @@
-var generateSalt = function()
-{
-	var set = '0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ';
-	var salt = '';
-	for (var i = 0; i < 10; i++) {
-		var p = Math.floor(Math.random() * set.length);
-		salt += set[p];
-	}
-	return salt;
-}
+let crypto = require('crypto'),
+    { scrypt, randomBytes, timingSafeEqual } = crypto;
 
-var md5 = function(str) {
-	return crypto.createHash('md5').update(str).digest('hex');
-}
+const keyLength = 32;
+/**
+ * Has a password or a secret with a password hashing algorithm (scrypt)
+ * @param {string} password
+ * @returns {string} The salt+hash
+ */
 
-var saltAndHash = function(pass, callback)
-{
-	var salt = generateSalt();
-	callback(salt + md5(pass + salt));
-}
+const hash = (password) => {
+    return new Promise((resolve, reject) => {
+        // generate random 16 bytes long salt - recommended by NodeJS Docs
+        const salt = randomBytes(16).toString("hex");
 
-var validatePassword = function(plainPass, hashedPass, callback)
-{
-	var salt = hashedPass.substr(0, 10);
-	var validHash = salt + md5(plainPass + salt);
-	callback(null, hashedPass === validHash);
-}
-this.validateEmail = function(e)
-{
-		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(e);
-}
-	
+        scrypt(password, salt, keyLength, (err, derivedKey) => {
+            if (err) reject(err);
+            // derivedKey is of type Buffer
+            resolve(`${salt}.${derivedKey.toString("hex")}`);
+        });
+    });
+};
+
+/**
+ * Compare a plain text password with a salt+hash password
+ * @param {string} password The plain text password
+ * @param {string} hash The hash+salt to check against
+ * @returns {boolean}
+ */
+const compare = (password, hash) => {
+    return new Promise((resolve, reject) => {
+        const [salt, hashKey] = hash.split(".");
+        // we need to pass buffer values to timingSafeEqual
+        const hashKeyBuff = Buffer.from(hashKey, "hex");
+        scrypt(password, salt, keyLength, (err, derivedKey) => {
+            if (err) reject(err);
+            // compare the new supplied password with the hashed password using timeSafeEqual
+            resolve(timingSafeEqual(hashKeyBuff, derivedKey));
+        });
+    });
+};
+
+module.exports = {hash, compare}

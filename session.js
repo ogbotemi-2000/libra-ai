@@ -43,7 +43,7 @@ module.exports = session = {
     validateJWT: function(req, res) {
       return new Promise((resolve, reject) => {
         let tokens = ['access', 'refresh'].map(e=>req.cookies[e+'_token']).filter(Boolean),
-            _resolve=_=>resolve(_), expired;
+            _resolve=_=>resolve(_), expired ;
 
         // Check if tokens found in cookies
         if (tokens.length) {

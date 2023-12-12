@@ -5,15 +5,15 @@ CREATE TABLE `users` (
  password varchar(255) COLLATE utf8_unicode_ci NOT NULL,
  username varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
  */
+
 let mysql = require('mysql2'),
     pool  = mysql.createPool({
     connectionLimit : 10,
 			host            : 'localhost',
 			user            : 'root',
 			password        : '2#@Are_1',
-			database        : 'libra'
+			database        : 'vivid'
     }), db = {
 			on: function(ev, cb){
 				if(ev==='pooled') this.cb=cb;
