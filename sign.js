@@ -1,7 +1,7 @@
 let router   = require('express').Router(),
     fs	     = require('fs'),
     both     = require('./both'),
-    db	     = require('./db'),
+    /*db	     = require('./db'),*/
     password = require('./password')
     sign     = {router};
 
