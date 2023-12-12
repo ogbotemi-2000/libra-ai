@@ -1,7 +1,7 @@
 let router   = require('express').Router(),
     fs	     = require('fs'),
     both     = require('./both'),
-    /*db	     = require('./db'),*/
+    db	     /*= require('./db'),*/
     password = require('./password')
     sign     = {router};
 
@@ -25,14 +25,14 @@ router.post('/', (req, res)=>{
 })
 
 router.get('/exists', async function(req, res) {
-    let email, obj, which, column
+//    let email, obj, which, column
     // , verify = await new Promise((rej, resolve)=>{
     //   https.get('https://app.elasticmail.com?apiKey=<API_KEY>', _res=>{
   
     //   }),
     //   resolve('')
     // }).catch(console.log);
-    for(let i in obj=req.query) which=(email = i).split('_')[0];
+/*    for(let i in obj=req.query) which=(email = i).split('_')[0];
 
     column=both.validateEmail(obj[email])?'email':'username'; //db.column(obj[email]),
     db.exists('users', [column, obj[email]], function(err, result, meta){
@@ -47,4 +47,6 @@ router.get('/exists', async function(req, res) {
       }
       res.send(message)
     })
+*/
+res.send('Database operations are currently not supported')
 })
