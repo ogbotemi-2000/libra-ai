@@ -37,4 +37,4 @@ app.get('/reid', (req, res, uuid, p='UUID')=>{
 app.use(express.static('./'))
 app.use('/sign', sign.router)
 
-app.listen(3000, _=>console.log('Server listening on port '+3000))
+app.listen(8000, _=>console.log('Server listening on port '+3000))
