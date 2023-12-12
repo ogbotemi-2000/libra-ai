@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "vividvibes",
   "version": "1.0.0",
-  "description": "trading bot platform and backend design with web and app implementation for a client",
+  "description": "A website for the use of custom music of artists in celebrations by users",
   "main": "index.js",
   "scripts": {
     "test": "npm install && echo \"[INSTALLED]: <Dependencies>\"",
