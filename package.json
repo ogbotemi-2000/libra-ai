@@ -32,5 +32,7 @@
     "rate-limiter-flexible": "^3.0.2",
     "redis": "^3.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "loadtest": "^8.0.6"
+  }
 }

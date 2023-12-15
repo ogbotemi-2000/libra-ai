@@ -1,4 +1,4 @@
-let fs        = require('fs');
+let fs = require('fs');
 
 module.exports = views= {
   signed: function(req, res, result){

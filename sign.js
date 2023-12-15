@@ -2,15 +2,16 @@ let router   = require('express').Router(),
     fs	     = require('fs'),
     both     = require('./both'),
     db	     /*= require('./db'),*/
-    password = require('./password')
+    password = require('./password'),
+    views    = require('./views'),
     sign     = {router};
 
 module.exports = sign;
 
-router.get('/', (req, res)=>{
-  console.log(req.query['signin'])
-  req.query['signin']?'':''
-  res.send('<pre>                     Under Construction</pre>')
+router.get('/', (req, res, obj={})=>{
+  views.fromFile('./sign.html', req.query['signin'] ? {
+        "RE::\\/\\*,\\s*setTimeout\\(_=>[^]+\\*\\/":match=>match.replace(/\/\*|\*\//g, ''),
+  }:{}, file=>res.send(file))
 })
 
 router.post('/', (req, res)=>{
@@ -20,15 +21,17 @@ router.post('/', (req, res)=>{
 		which = data.shift().split('=')[1].toLowerCase(),
 		viaIframe = +data.shift().split('=')[1],
 		data = data.filter(e=>new RegExp('^'+which).test(e)).map(e=>e.split('=')),
-		sign[which](data, res, viaIframe)
+		console.log(data, viaIframe, req.headers['sec-fetch-dest'])
+		//sign[which](data, res, viaIframe)
 	})
+  res.send('<pre>	Validated without reason</pre>')
 })
 
 router.get('/exists', async function(req, res) {
 //    let email, obj, which, column
     // , verify = await new Promise((rej, resolve)=>{
     //   https.get('https://app.elasticmail.com?apiKey=<API_KEY>', _res=>{
-  
+   	
     //   }),
     //   resolve('')
     // }).catch(console.log);
@@ -48,5 +51,5 @@ router.get('/exists', async function(req, res) {
       res.send(message)
     })
 */
-res.send('Database operations are currently not supported')
+res.send('')
 })

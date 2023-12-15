@@ -75,6 +75,11 @@ function meetsCriteriaInParentTree(node, criteria, limit) {
 let tooltip, count = 0;
 function init() {
     tooltip = document.querySelector(".tooltip.builder");
+/* to remove or leave build tools on page*/
+  if(location.search.search('debug')=== -1) {
+    qsa('.COMPONENT').forEach(e=>e.remove())
+  }
+
     let vars, processed;
     this.vars = vars = {},
     vars.dom_tree = {},
